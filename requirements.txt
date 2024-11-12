@@ -1,0 +1,7 @@
+discord.py
+requests
+python-dotenv
+matplotlib
+plotly
+kaleido
+pandas
