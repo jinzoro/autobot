@@ -3,18 +3,13 @@
 </p>
 <p align="center"><h1 align="center">AUTOBOT</h1></p>
 <p align="center">
-	<em><code>❯ REPLACE-ME</code></em>
+    <em>Your friendly neighborhood crypto bot.</em>
 </p>
 <p align="center">
-	<img src="https://img.shields.io/github/license/jinzoro/autobot?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/jinzoro/autobot?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/jinzoro/autobot?style=default&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/jinzoro/autobot?style=default&color=0080ff" alt="repo-language-count">
-</p>
-<p align="center"><!-- default option, no dependency badges. -->
-</p>
-<p align="center">
-	<!-- default option, no dependency badges. -->
+    <img src="https://img.shields.io/github/license/jinzoro/autobot?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
+    <img src="https://img.shields.io/github/last-commit/jinzoro/autobot?style=for-the-badge&logo=git&logoColor=white&color=0080ff" alt="last-commit">
+    <img src="https://img.shields.io/github/languages/top/jinzoro/autobot?style=for-the-badge&color=0080ff" alt="repo-top-language">
+    <img src="https://img.shields.io/github/languages/count/jinzoro/autobot?style=for-the-badge&color=0080ff" alt="repo-language-count">
 </p>
 <br>
 
@@ -28,8 +23,6 @@
   - [☑️ Prerequisites](#-prerequisites)
   - [⚙️ Installation](#-installation)
   - [🤖 Usage](#🤖-usage)
-  - [🧪 Testing](#🧪-testing)
-- [📌 Project Roadmap](#-project-roadmap)
 - [🔰 Contributing](#-contributing)
 - [🎗 License](#-license)
 - [🙌 Acknowledgments](#-acknowledgments)
@@ -38,13 +31,20 @@
 
 ## 📍 Overview
 
-<code>❯ REPLACE-ME</code>
+AutoBot is a powerful and versatile Discord bot designed to provide real-time cryptocurrency information, analysis, and predictions. Whether you're a seasoned trader or just getting started, AutoBot has the tools you need to stay on top of the market.
 
 ---
 
 ## 👾 Features
 
-<code>❯ REPLACE-ME</code>
+### Commands
+
+- **`!crypto <coin>`**: Get detailed information about a cryptocurrency, including price, market cap, 24h volume, and more.
+- **`!chart <coin> [interval] [limit]`**: Generate a candlestick chart for a given cryptocurrency. You can specify the interval (e.g., `1h`, `4h`, `1d`) and the number of data points to include.
+- **`!predict <coin> [interval]`**: Get a price prediction and technical analysis for a cryptocurrency. This command provides a forecast using an ARIMA model and a summary of key technical indicators.
+- **`!analyze <coin>`**: Perform a multi-interval technical analysis of a cryptocurrency, providing a detailed report and an overall recommendation.
+- **`!alert <coin> <target_price>`**: Set a price alert for a cryptocurrency. The bot will notify you when the price reaches your target.
+- **`!setnews`**: Set the current channel to receive regular crypto news updates.
 
 ---
 
