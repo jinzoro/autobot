@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
-from utils.get_crypto_data import get_historical_data_binance, calculate_indicators
+from utils.get_crypto_data import get_historical_data_binance, calculate_indicators, arima_forecast, generate_forecast_chart
+import pandas as pd
 
 @commands.command(name='predict')
 async def predict(ctx, coin: str, interval: str = '1d'):
@@ -11,7 +12,7 @@ async def predict(ctx, coin: str, interval: str = '1d'):
         return
 
     # Get historical data for the specified coin and interval
-    df = get_historical_data_binance(coin, interval)
+    df = get_historical_data_binance(coin, interval, limit='200') # Increased limit for better forecasting
     if df is None:
         await ctx.send(f"Could not retrieve historical data for {coin}. Please check the coin symbol.")
         return
@@ -71,11 +72,28 @@ async def predict(ctx, coin: str, interval: str = '1d'):
     else:
         rsi_signal = f"RSI is at {latest_rsi:.2f}, which is in the normal range."
 
+    # Perform ARIMA forecast
+    forecast, error_message = arima_forecast(df, forecast_periods=5)
+    if error_message:
+        forecast_text = f"**ARIMA Forecast**: {error_message}"
+    else:
+        forecast_text = "**ARIMA Forecast (next 5 periods)**:\n"
+        for i, val in enumerate(forecast):
+            forecast_text += f"Period {i+1}: {val:.4f}\n"
+
     # Create and send embed message with prediction
     embed = discord.Embed(
-        title=f"{coin.upper()} Price Prediction ({interval} Interval)",
-        description=f"{signal}\n\n{long_term_trend}\n\n{macd_signal}\n\n{breakout_signal}\n\n{rsi_signal}",
+        title=f"{coin.upper()} Price Prediction & Analysis ({interval} Interval)",
+        description=f"{signal}\n\n{long_term_trend}\n\n{macd_signal}\n\n{breakout_signal}\n\n{rsi_signal}\n\n{forecast_text}",
         color=discord.Color.blue()
     )
-    embed.set_footer(text="Technical analysis indicators are not financial advice. Trade responsibly.")
-    await ctx.send(embed=embed)
+    embed.set_footer(text="Technical analysis and forecasts are not financial advice. Trade responsibly.")
+
+    # Generate and attach chart if forecast is available
+    if forecast is not None:
+        chart_buf = generate_forecast_chart(df, forecast, coin, interval)
+        file = discord.File(chart_buf, filename=f"{coin.lower()}_forecast.png")
+        embed.set_image(url=f"attachment://{coin.lower()}_forecast.png")
+        await ctx.send(embed=embed, file=file)
+    else:
+        await ctx.send(embed=embed)

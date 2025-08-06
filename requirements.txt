@@ -5,3 +5,6 @@ matplotlib
 plotly
 kaleido
 pandas
+statsmodels
+scipy
+scikit-learn
