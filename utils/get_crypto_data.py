@@ -1,6 +1,9 @@
 import requests
 import os
 import pandas as pd
+from statsmodels.tsa.arima.model import ARIMA
+import matplotlib.pyplot as plt
+import io
 
 # Function to get metadata for a coin (includes logo)
 def get_crypto_metadata(coin_symbol):
@@ -95,7 +98,6 @@ def get_historical_data_binance(coin_symbol, interval='1d', limit='100'):
         return df
     return None
 
-
 # Function to calculate EMA and RSI indicators
 def calculate_indicators(df):
     # Calculate 12-period EMA, 26-period EMA, 100-period EMA, 200-period EMA
@@ -103,14 +105,16 @@ def calculate_indicators(df):
     df['EMA_26'] = df['close'].ewm(span=26, adjust=False).mean()
     df['EMA_100'] = df['close'].ewm(span=100, adjust=False).mean()
     df['EMA_200'] = df['close'].ewm(span=200, adjust=False).mean()
-    
-    # Calculate RSI (14-period)
+
+    # Calculate RSI (14-period) with protection against division by zero
     delta = df['close'].diff(1)
     gain = delta.where(delta > 0, 0)
     loss = -delta.where(delta < 0, 0)
     avg_gain = gain.rolling(window=14).mean()
     avg_loss = loss.rolling(window=14).mean()
-    rs = avg_gain / avg_loss
+
+    # Add a small epsilon to avoid division by zero
+    rs = avg_gain / (avg_loss + 1e-9)
     df['RSI'] = 100 - (100 / (1 + rs))
     
     # Calculate MACD and MACD Signal Line
@@ -118,3 +122,36 @@ def calculate_indicators(df):
     df['MACD_Signal'] = df['MACD'].ewm(span=9, adjust=False).mean()
     
     return df
+
+# Function to perform ARIMA forecast
+def arima_forecast(df, forecast_periods=5):
+    # Ensure we have enough data
+    if len(df) < 30:
+        return None, "Not enough historical data to make a reliable forecast."
+
+    # Use the 'close' price for forecasting
+    model = ARIMA(df['close'], order=(5,1,0))
+    model_fit = model.fit()
+
+    # Forecast the next periods
+    forecast = model_fit.forecast(steps=forecast_periods)
+    return forecast, None
+
+# Function to generate a forecast chart
+def generate_forecast_chart(df, forecast, coin_symbol, interval):
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['close'], label='Historical Close Price')
+    plt.plot(forecast, label='ARIMA Forecast', linestyle='--')
+    plt.title(f'{coin_symbol.upper()} Price Forecast ({interval})')
+    plt.xlabel('Time')
+    plt.ylabel('Price (USDT)')
+    plt.legend()
+    plt.grid(True)
+
+    # Save plot to a bytes buffer
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    plt.close()
+
+    return buf
