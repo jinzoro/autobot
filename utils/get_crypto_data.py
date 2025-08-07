@@ -4,9 +4,29 @@ import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
 import io
+import json
+
+COINS_FILE = 'coins.json'
+
+def is_valid_coin(coin_symbol):
+    """
+    Checks if a coin symbol is valid by looking it up in the local coin list.
+    """
+    try:
+        with open(COINS_FILE, 'r') as f:
+            coins = json.load(f)
+    except FileNotFoundError:
+        return False  # If the coin list doesn't exist, all coins are considered invalid
+
+    for coin in coins:
+        if coin['symbol'].upper() == coin_symbol.upper():
+            return True
+    return False
 
 # Function to get metadata for a coin (includes logo)
 def get_crypto_metadata(coin_symbol):
+    if not is_valid_coin(coin_symbol):
+        return None
     url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/info"
     headers = {
         "Accepts": "application/json",
@@ -24,6 +44,8 @@ def get_crypto_metadata(coin_symbol):
 
 # Function to get crypto data for a specific coin
 def get_crypto_data(coin_symbol):
+    if not is_valid_coin(coin_symbol):
+        return None
     url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
     headers = {
         "Accepts": "application/json",
