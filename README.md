@@ -1,287 +1,88 @@
+# AutoBot: Your Ultimate Crypto Companion
+
 <p align="center">
-    <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" align="center" width="30%">
+  <a href="https://github.com/jinzoro/autobot/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/jinzoro/autobot?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="License">
+  </a>
+  <a href="https://github.com/jinzoro/autobot/commits/main">
+    <img src="https://img.shields.io/github/last-commit/jinzoro/autobot?style=for-the-badge&logo=git&logoColor=white&color=0080ff" alt="Last Commit">
+  </a>
+  <a href="https://github.com/jinzoro/autobot">
+    <img src="https://img.shields.io/github/languages/top/jinzoro/autobot?style=for-the-badge&color=0080ff" alt="Top Language">
+  </a>
+  <a href="https://github.com/jinzoro/autobot">
+    <img src="https://img.shields.io/github/languages/count/jinzoro/autobot?style=for-the-badge&color=0080ff" alt="Language Count">
+  </a>
 </p>
-<p align="center"><h1 align="center">AUTOBOT</h1></p>
-<p align="center">
-	<em><code>❯ REPLACE-ME</code></em>
-</p>
-<p align="center">
-	<img src="https://img.shields.io/github/license/jinzoro/autobot?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/jinzoro/autobot?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/jinzoro/autobot?style=default&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/jinzoro/autobot?style=default&color=0080ff" alt="repo-language-count">
-</p>
-<p align="center"><!-- default option, no dependency badges. -->
-</p>
-<p align="center">
-	<!-- default option, no dependency badges. -->
-</p>
-<br>
 
-## 🔗 Table of Contents
+AutoBot is a feature-rich Discord bot designed to be your one-stop solution for all things crypto. Whether you're a seasoned trader or a curious beginner, AutoBot provides the tools and information you need to navigate the exciting world of cryptocurrencies.
 
-- [📍 Overview](#-overview)
-- [👾 Features](#-features)
-- [📁 Project Structure](#-project-structure)
-  - [📂 Project Index](#-project-index)
-- [🚀 Getting Started](#-getting-started)
-  - [☑️ Prerequisites](#-prerequisites)
-  - [⚙️ Installation](#-installation)
-  - [🤖 Usage](#🤖-usage)
-  - [🧪 Testing](#🧪-testing)
-- [📌 Project Roadmap](#-project-roadmap)
-- [🔰 Contributing](#-contributing)
-- [🎗 License](#-license)
-- [🙌 Acknowledgments](#-acknowledgments)
+## ✨ Features
 
----
+AutoBot comes packed with a wide range of commands to help you stay ahead of the market:
 
-## 📍 Overview
+| Command | Description | Example |
+|---|---|---|
+| `!crypto <coin>` | Get detailed price and market data for any cryptocurrency. | `!crypto BTC` |
+| `!chart <coin> [interval] [limit]` | Generate a candlestick chart for a coin. | `!chart ETH 1h 50` |
+| `!predict <coin> [interval]` | Get a price prediction and technical analysis. | `!predict SOL 4h` |
+| `!analyze <coin>` | Perform a multi-interval technical analysis. | `!analyze ADA` |
+| `!alert <coin> <target_price>` | Set a price alert for a coin. | `!alert DOGE 0.25` |
+| `!setnews` | Set a channel for crypto news updates. | `!setnews` |
 
-<code>❯ REPLACE-ME</code>
-
----
-
-## 👾 Features
-
-<code>❯ REPLACE-ME</code>
-
----
-
-## 📁 Project Structure
-
-```sh
-└── autobot/
-    ├── Procfile
-    ├── README.md
-    ├── alerts.json
-    ├── bot.py
-    ├── commands
-    │   ├── __pycache__
-    │   ├── alert.py
-    │   ├── analyze_command.py
-    │   ├── chart.py
-    │   ├── crypto.py
-    │   ├── predict.py
-    │   └── setnews.py
-    ├── requirements.txt
-    ├── tasks
-    │   ├── __pycache__
-    │   ├── check_alerts.py
-    │   ├── coin_analysis.py
-    │   └── crypto_news.py
-    └── utils
-        ├── __pycache__
-        └── get_crypto_data.py
-```
-
-
-### 📂 Project Index
-<details open>
-	<summary><b><code>AUTOBOT/</code></b></summary>
-	<details> <!-- __root__ Submodule -->
-		<summary><b>__root__</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/alerts.json'>alerts.json</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/Procfile'>Procfile</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/requirements.txt'>requirements.txt</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/bot.py'>bot.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-		</blockquote>
-	</details>
-	<details> <!-- tasks Submodule -->
-		<summary><b>tasks</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/tasks/coin_analysis.py'>coin_analysis.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/tasks/crypto_news.py'>crypto_news.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/tasks/check_alerts.py'>check_alerts.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-		</blockquote>
-	</details>
-	<details> <!-- utils Submodule -->
-		<summary><b>utils</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/utils/get_crypto_data.py'>get_crypto_data.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-		</blockquote>
-	</details>
-	<details> <!-- commands Submodule -->
-		<summary><b>commands</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/commands/analyze_command.py'>analyze_command.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/commands/predict.py'>predict.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/commands/alert.py'>alert.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/commands/crypto.py'>crypto.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/commands/setnews.py'>setnews.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/jinzoro/autobot/blob/master/commands/chart.py'>chart.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-		</blockquote>
-	</details>
-</details>
-
----
 ## 🚀 Getting Started
 
-### ☑️ Prerequisites
+To get AutoBot up and running on your server, follow these simple steps:
 
-Before getting started with autobot, ensure your runtime environment meets the following requirements:
+### Prerequisites
 
-- **Programming Language:** Python
-- **Package Manager:** Pip
+- Python 3.8 or higher
+- A Discord account and a server where you have administrative privileges.
 
+### Installation
 
-### ⚙️ Installation
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/jinzoro/autobot.git
+    cd autobot
+    ```
 
-Install autobot using one of the following methods:
+2.  **Install the dependencies:**
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-**Build from source:**
+3.  **Create a `.env` file** in the root directory and add your Discord bot token and CoinMarketCap API key:
+    ```
+    DISCORD_BOT_TOKEN=your_discord_bot_token
+    COINMARKETCAP_API_KEY=your_coinmarketcap_api_key
+    ```
 
-1. Clone the autobot repository:
-```sh
-❯ git clone https://github.com/jinzoro/autobot
-```
+4.  **Run the bot:**
+    ```sh
+    python bot.py
+    ```
 
-2. Navigate to the project directory:
-```sh
-❯ cd autobot
-```
+## 🤝 Contributing
 
-3. Install the project dependencies:
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
-**Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-```sh
-❯ pip install -r requirements.txt
-```
+## 📄 License
 
+Distributed under the MIT License. See `LICENSE` for more information.
 
+## 🙏 Acknowledgments
 
-
-### 🤖 Usage
-Run autobot using the following command:
-**Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
-
-```sh
-❯ python {entrypoint}
-```
-
-
-### 🧪 Testing
-Run the test suite using the following command:
-**Using `pip`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Pip-3776AB.svg?style={badge_style}&logo=pypi&logoColor=white" />](https://pypi.org/project/pip/)
-
-```sh
-❯ pytest
-```
-
-
----
-## 📌 Project Roadmap
-
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
-
----
-
-## 🔰 Contributing
-
-- **💬 [Join the Discussions](https://github.com/jinzoro/autobot/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/jinzoro/autobot/issues)**: Submit bugs found or log feature requests for the `autobot` project.
-- **💡 [Submit Pull Requests](https://github.com/jinzoro/autobot/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-
-<details closed>
-<summary>Contributing Guidelines</summary>
-
-1. **Fork the Repository**: Start by forking the project repository to your github account.
-2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
-   ```sh
-   git clone https://github.com/jinzoro/autobot
-   ```
-3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
-   ```sh
-   git checkout -b new-feature-x
-   ```
-4. **Make Your Changes**: Develop and test your changes locally.
-5. **Commit Your Changes**: Commit with a clear message describing your updates.
-   ```sh
-   git commit -m 'Implemented new feature x.'
-   ```
-6. **Push to github**: Push the changes to your forked repository.
-   ```sh
-   git push origin new-feature-x
-   ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
-</details>
-
-<details closed>
-<summary>Contributor Graph</summary>
-<br>
-<p align="left">
-   <a href="https://github.com{/jinzoro/autobot/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=jinzoro/autobot">
-   </a>
-</p>
-</details>
-
----
-
-## 🎗 License
-
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
-
----
-
-## 🙌 Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
-
----
+- [discord.py](https://discordpy.readthedocs.io/en/stable/)
+- [CoinMarketCap API](https://coinmarketcap.com/api/)
+- [Binance API](https://github.com/binance/binance-spot-api-docs)
+- [Plotly](https://plotly.com/python/)
+- [statsmodels](https://www.statsmodels.org/stable/index.html)
