@@ -2,9 +2,10 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
-from commands import crypto, setnews, chart, alert, predict, analyze_command
+from commands import crypto, setnews, chart, alert, predict, analyze_command, search
 from tasks.crypto_news import start_crypto_news
 from tasks.coin_analysis import analyze_coins
+from tasks.discover_coins import discover_coins
 
 # Load environment variables
 load_dotenv()
@@ -25,6 +26,7 @@ bot.add_command(chart.chart)
 bot.add_command(alert.set_alert)
 bot.add_command(predict.predict)
 bot.add_command(analyze_command.analyze)
+bot.add_command(search.search)
 
 
 
@@ -32,6 +34,8 @@ bot.add_command(analyze_command.analyze)
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
+    # Discover all coins and save them to a file
+    discover_coins()
     # Start the background tasks
     start_crypto_news(bot)
     analyze_coins.start()
